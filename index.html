@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Carbono Neutro</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f0;
+            color: #000000;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background: linear-gradient(135deg, #19be22 0%, #23db2f9f 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+
+        header img.logo {
+            max-width: 120px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #c8e6c9;
+            transform: scale(1.1);
+        }
+
+
+        section {
+            padding: 30px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #033a06;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #388e3c;
+            padding-bottom: 10px;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #388e3c;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #e8f5e9;
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        form input,
+        form textarea,
+        form select {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus,
+        form textarea:focus,
+        form select:focus {
+            border-color: #388e3c;
+            outline: none;
+        }
+
+        form button {
+            padding: 12px;
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+
+
+        #map {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 400px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+
+        .product-grid {
+            display: flex;
+
+
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            width: calc(33.33% - 20px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card button {
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-card button:hover {
+            background-color: #2e7d32;
+        }
+
+
+        #carrinho {
+            margin-top: 30px;
+        }
+
+        #cart {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #clear-cart {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #c62828;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #clear-cart:hover {
+            background-color: #b71c1c;
+        }
+
+
+        .video-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .video-container video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #2e7d32;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .product-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .product-card {
+                width: 100%;
+            }
+        }
+
+        .header-imagem-fundo {
+            background-image: url(tumblr_ouiibvZdJU1wvke5ro2_1280.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-imagem-fundo">
+        <img src="image_transparent_background.png" alt="Logo PRIMA Consciência Climática" class="logo">
+        <h1>Projeto Carbono Neutro</h1>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre o Projeto</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#carrinho" id="cart-link">Carrinho (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#localizacao">Localização</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>O PROJETO EDUCAÇÃO AMBIENTAL E MUDANÇAS CLIMÁTICAS é o alicerce de um programa sócio ambiental que visa
+            mobilizar cidadãos para a percepção, compreensão e participação efetiva na melhoria da qualidade de vida
+            abordando o tema das mudanças climáticas e do aquecimento global.</p>
+
+        <h3>Missão</h3>
+        <p>O PROJETO visa neutralizar as emissões de carbono pelas organizações que se dispõe a tal prática. Isto é
+            possível por meio de um trabalho inicial de cunho pedagógico, de sensibilização e capacitação técnica.
+            Paralelamente, calcula-se as emissões dos GEE´s Gases do Efeito Estufa e a quantidade de árvores a serem
+            plantadas em Área de Preservação Permanente para a devida compensação.</p>
+
+        <h3>SELO PRIMA MUDANÇAS CLIMÁTICAS</h3>
+        <p>A certificação de Neutralização de carbono resulta de um levantamento de todas as emissões de GEE`s – Gases
+            de Efeito Estufa de uma instituição, empresa ou mesmo um evento que possa permitir um estudo e cálculo
+            seguro do que é necessário ser feito para garantir a compensação ambiental do carbono emitido.
+
+            Para renovar o certificado, a instituição interessada deverá demonstrar ter atingido, no mínimo, as metas
+            previstas para o ano, que sempre deverão ser menores em relação ao ano anterior.
+
+            O Selo Prima Mudanças Climáticas, no Brasil, é validado pela REBIA – Rede Brasileira de Informação
+            Ambiental, pelo projeto BEFE – Bolsa Brasileira de Commoditties Ambientais, pela ONG Grupo Brasil Verde e
+            consequentemente monitorado por uma rede de comunicação ambiental, debatedores e formadores de opinião, tais
+            como cientistas, ambientalistas, políticos, pesquisadores, juristas, advogados, administradores públicos,
+            acadêmicos, empresários, estudantes e tantos outros profissionais, voluntários ambientais e cidadãos
+            interessados em contribuir com a causa ecológica.</p>
+
+        <h3>Objetivos</h3>
+        <p>Colaborar na redução das emissões de Carbono para atmosfera combatendo os efeitos dramáticos do aquecimento
+            global;
+            Apresentar um modelo estratégico contra as mudanças climáticas que possa ser replicado pelo país;
+            Propiciar aos partícipes a possibilidade de ajudar concretamente a natureza e ao planeta utilizando a frase
+            cunhada na Conferência Rio Eco 92 ” pensar globalmente, agir localmente”;
+            Divulgar á sociedade que existem instituições que são exemplo de boas práticas em prol do meio ambiente,
+            mostrando que não só é possível haver mudanças em direção a sustentabilidade, mais que essa mudança já
+            começou com as organizações líderes.
+
+            Divulgar á sociedade que existem instituições que são exemplo de boas práticas em prol do meio ambiente,
+            mostrando que não só é possível haver mudanças em direção a sustentabilidade, mais que essa mudança já
+            começou com as organizações líderes.</p>
+
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-LzefwljubQ"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <h2>Nossas Árvores</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Quantidade de Árvores</th>
+                    <th>Preço (R$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 a 10 árvores</td>
+                    <td>150,00</td>
+                </tr>
+                <tr>
+                    <td>11 a 100 árvores</td>
+                    <td>120,00</td>
+                </tr>
+                <tr>
+                    <td>101 a 500 árvores</td>
+                    <td>90,00</td>
+                </tr>
+                <tr>
+                    <td>Acima de 501 árvores</td>
+                    <td>A combinar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="produtos">
+        <h2>Produtos</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="arvore_a.jpg.jpg" alt="Árvore A">
+                <h3>Árvore Pioneira</h3>
+                <label for="qtyA">Quantidade:</label>
+                <input type="number" min="1" value="1" id="qtyA">
+                <button onclick="addToCart('Árvore A', document.getElementById('qtyA').value)">Adicionar ao
+                    Carrinho</button>
+            </div>
+            <div class="product-card">
+                <img src="arvore_b.jpg.jpg" alt="Árvore B">
+                <h3>Árvore Intermediária</h3>
+                <label for="qtyB">Quantidade:</label>
+                <input type="number" min="1" value="1" id="qtyB">
+                <button onclick="addToCart('Árvore B', document.getElementById('qtyB').value)">Adicionar ao
+                    Carrinho</button>
+            </div>
+            <div class="product-card">
+                <img src="arvore_c.jpg.jpg" alt="Árvore C">
+                <h3>Árvore Clímax</h3>
+                <label for="qtyC">Quantidade:</label>
+                <input type="number" min="1" value="1" id="qtyC">
+                <button onclick="addToCart('Árvore C', document.getElementById('qtyC').value)">Adicionar ao
+                    Carrinho</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="carrinho">
+        <h2>Carrinho de Compras</h2>
+        <ul id="cart"></ul>
+        <button id="clear-cart" onclick="clearCart()">Limpar Carrinho</button>
+        <h3>Total: R$<span id="cart-total">0</span></h3>
+        <button id="finalize-purchase" onclick="finalizePurchase()">Finalizar Compra</button>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <section id="localizacao">
+        <h2>Localização</h2>
+        <p>Horário de Atendimento: Segunda a Sexta, das 9h às 17h</p>
+        <div id="map"><iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2206785485932!2d-43.1044355!3d-22.9052299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x998384c9d1261b%3A0x86899d518cb85626!2sAv.%20Roberto%20Silveira%2C%20349%20-%20Icara%C3%AD%2C%20Niter%C3%B3i%20-%20RJ%2C%2024230-152!5e0!3m2!1spt-BR!2sbr!4v1729287197036!5m2!1spt-BR!2sbr"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </section>
+
+    <footer style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <div>
+            <p>&copy; 2024 Projeto Carbono Neutro. Todos os direitos reservados.</p>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 8px;">
+            <p style="margin-right: 8px;">harduim.ricardo@gmail.com</p>
+            <img src="https://www.google.com/gmail/about/static/images/logo-gmail.png" alt="Gmail Logo"
+                style="width: 20px; height: 20px;">
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 8px;">
+            <p style="margin-right: 8px;">(21) 99514-2594</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone Icon"
+                style="width: 20px; height: 20px;">
+        </div>
+    </footer>
+
+
+
+    <script>
+
+        const cart = [];
+
+        function addToCart(item, quantity) {
+            const totalQuantity = parseInt(quantity);
+            let price;
+
+            if (totalQuantity >= 1 && totalQuantity <= 10) {
+                price = 150.00;
+            } else if (totalQuantity >= 11 && totalQuantity <= 100) {
+                price = 120.00;
+            } else if (totalQuantity >= 101 && totalQuantity <= 500) {
+                price = 90.00;
+            } else {
+                alert("Quantidade acima de 500 deve ser negociada!");
+                return;
+            }
+
+            const cartItem = {
+                name: item,
+                quantity: totalQuantity,
+                price: price,
+            };
+
+            cart.push(cartItem);
+            alert(`Adicionado ${totalQuantity} de ${item} ao carrinho.`);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cart");
+            cartList.innerHTML = "";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${item.quantity} x ${item.name} - R$${item.price.toFixed(2)}`;
+                cartList.appendChild(li);
+                total = item.price;
+            });
+
+            document.getElementById("cart-total").textContent = total.toFixed(2).replace('.', ',');
+            document.getElementById("cart-count").textContent = cart.length;
+        }
+
+        function clearCart() {
+            cart.length = 0;
+            updateCart();
+        }
+
+        function finalizePurchase() {
+            alert("Compra finalizada com sucesso!");
+            clearCart();
+        }
+    </script>
+    <script async defer src=""></script>
+</body>
+
+</html>
